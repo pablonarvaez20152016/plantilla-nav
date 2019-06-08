@@ -1,0 +1,67 @@
+## comando para generar un archivo de 10gb de tamaño
+
+dd if=/dev/zero of=tempo.img bs=1024 count=$[2*1024*1024]
+
+## lee los sectores del archivo pero los borra
+xxd <nombre del archivo>
+
+## 
+
+hexdump tempo.img 
+
+## leer del archivo y enviar al hollo negro, muestra info 
+dd if=tempo.img  of=/dev/null 
+##leer memoria
+dd if=/dev/sdb  of=/dev/null
+
+##copia imagen a memoria
+
+dd if=/dev/<ruta> of=/dev/sdb
+
+##sacar cadenas de un archivo cualquiera
+cat /usr/bin/zip
+## de una manera que podemos analizar
+strings /usr/bin/zip
+strings /usr/bin/zip | less
+## captura de trafico
+ls * falta
+
+## Herramienta para tomar trafico de red
+## muestra origen , fin 
+## lineas que se ponen en rojo muestran los loop
+   iptraf-ng o iptraf
+
+##captura trafico
+tcpdump -i  eth0 -w captura.pcap -s 65535
+
+
+## muestra lo que tu escribas
+ strings captura.pcap | 
+
+## ordena
+
+strings captura.pcap | sort
+
+##unico y muestra
+strings captura.pcap | sort | uniq | less
+
+
+#____________________________________________________________________
+## script que hace ciclo con tcpdump de un cierto tiempo
+
+#!/bin/bash
+id=$1
+ciclos=$2
+iface=ens3		nombre de la interfaz
+trotacion=3600        numero que utilizara como tiempo
+ruta=/var/log/tcpdump
+#validaciones
+numargs=$(echo $#)
+case #numargs in
+	1) echo "captura..."
+		exit;;
+	2)echo "argumentos correctos"
+	*)  echo "tiene otros argumentos innecesarios"
+
+
+
